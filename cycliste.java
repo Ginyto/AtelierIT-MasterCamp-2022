@@ -8,12 +8,12 @@ public class Cycliste{
 
 
 
-    public Cycliste(String name, String lastname, int dossart, int datefin) {
+    public Cycliste(String name, String lastname, int dossart) {
         this.name = name;
         this.lastname = lastname;
         this.dossart = dossart;
     
-        this.datefin = datefin;
+      
     }
     
     public Cycliste(){
