@@ -21,6 +21,22 @@ public class Course {
     public void setNom(String nom) {
         this.nom = nom;
     }
+    void classement(){
+        List<Cycliste> cyclisteFin = new arrrayList<Cycliste>()
+        List<Cycliste> cyclisteEncours = new arrrayList<Cycliste>()
+        List<Cycliste> cyclisteAbnDisc = new arrrayList<Cycliste>()
+        for (Cycliste c: cycliste){
+            int status=c.getstatus();
+            if (status ==cycliste.FINI) cyclisteFini.add(c)
+            if (status ==cycliste.ENCOURS) cyclisteEncours.add(c)
+            if (status ==cycliste.DISCALIFIE||status ==cycliste.ABANDON) cyclisteAbnDisc.add(c)
+            
+               
+            }
+
+        }
+        
+    }
 
     public void inscription (){
         int dossard = 0;
