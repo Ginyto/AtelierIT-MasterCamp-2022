@@ -7,7 +7,12 @@ public class Cycliste{
     private Date datefin;   
 
 
-
+    /**
+     * Constructor
+     * @param name
+     * @param lastname
+     * @param dossard
+     */
     public Cycliste(String name, String lastname, int dossard) {
         this.name = name;
         this.lastname = lastname;
