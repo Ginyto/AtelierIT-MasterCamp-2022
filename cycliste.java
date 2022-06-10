@@ -1,10 +1,10 @@
 public class Cycliste{
     
-    String name;
-    String lastname;
-    int dossard;
-    int datedebut= 0;
-    int datefin;   
+    private String name;
+    private String lastname;
+    private int dossard;
+    private Date datedebut;
+    private Date datefin;   
 
 
 
@@ -41,20 +41,30 @@ public class Cycliste{
 
     
 
-    public int getDatefin() {
-        return this.datefin;
-    }
-
-    public void setDatefin(int datefin) {
-        this.datefin = datefin;
-    }
-
     void abandonner(){
         this.datefin= 0;
     }
     
     int gettemps(){
-        return datefin-datedebut;        
+        if (start()==True && finish== True){
+            return datefin-datedebut; 
+        }
+        return -1;       
+    }
+    void arriver(){
+        if(start()==True && finish()== False){
+            this.datefin= new Date()
+        }
+
+        
+    }
+
+    void debutcourse(){
+        if(start()==False && finish()== False){
+            this.datedebut= new Date()
+        }
+
+
     }
 }
 
