@@ -1,11 +1,13 @@
+import java.util.ArrayList;
+
+
 public class Course {
 
     String nom;
 
-    Cycliste[] cyclistes;
+    ArrayList<Cycliste> cyclistes = new ArrayList<Cycliste>();
 
-
-    public Course(String nom){
+    public Course(String nom) {
         this.setNom(nom);
     }
 
