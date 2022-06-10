@@ -9,7 +9,6 @@ public class Course {
         this.setNom(nom);
     }
 
-
     public String getNom() {
         return this.nom;
     }
@@ -17,15 +16,5 @@ public class Course {
     public void setNom(String nom) {
         this.nom = nom;
     }
-
-    public Cycliste[] getCyclistes() {
-        return this.cyclistes;
-    }
-
-    public void setCyclistes(Cycliste[] cyclistes) {
-        this.cyclistes = cyclistes;
-    
-
-
 
 }
