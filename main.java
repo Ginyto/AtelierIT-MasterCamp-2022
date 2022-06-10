@@ -11,5 +11,9 @@ public class Main {
         Course course = new Course(saisie.nextLine());
 
         Cycliste c1 = new Cycliste("Jean", "Leroux", 55, 3000);
+
+        System.out.println("This is the name of the course");
+        System.out.print(course.getNom());
+
     }
 }
