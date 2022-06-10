@@ -2,23 +2,18 @@ public class Cycliste{
     
     String name;
     String lastname;
-    int dossart;
+    int dossard;
     int datedebut= 0;
     int datefin;   
 
 
 
-    public Cycliste(String name, String lastname, int dossart) {
+    public Cycliste(String name, String lastname, int dossard) {
         this.name = name;
         this.lastname = lastname;
-        this.dossart = dossart;
-    
-      
+        this.dossard = dossard;
     }
-    
-    public Cycliste(){
-        
-    }
+
 
     public String getName() {
         return this.name;
@@ -36,12 +31,12 @@ public class Cycliste{
         this.lastname = lastname;
     }
 
-    public int getDossart() {
-        return this.dossart;
+    public int getDossard() {
+        return this.dossard;
     }
 
-    public void setDossart(int dossart) {
-        this.dossart = dossart;
+    public void setDossard(int dossard) {
+        this.dossard= dossard;
     }
 
     
