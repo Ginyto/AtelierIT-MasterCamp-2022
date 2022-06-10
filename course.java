@@ -38,20 +38,50 @@ public class Course {
         
     }
 
-    public void inscription (){
-        int dossard = 0;
 
-        System.out.println("Please enter the name of the cyclist");
+    /**
+     * Inscription of cyclistes in an arraylist
+     */
+    public void inscription(int dossard) {
+        
+
+        System.out.println("Please enter the name of the cyclist number " + dossard);
 
         String name = saisie.nextLine();
 
-        System.out.println("Please enter the lastname of the cyclist");
+        System.out.println("Please enter the lastname of the cyclist" + dossard);
 
         String lastname = saisie.nextLine();
 
         Cycliste cycliste = new Cycliste(name, lastname, dossard);
 
-        dossard += 1;
+        cyclistes.add(cycliste);
+
+    }
+
+    /*
+     * Inscription of cyclistes in an arraylist
+     */
+    public void inscriptions(int howmany) {
+
+        for (int i = 0; i < howmany; i++) {
+            this.inscription(i+1);
+        }
+    }
+
+    public String getCycliste(int index) {
+
+        return "cycliste -> " + cyclistes.get(index).name + " " + cyclistes.get(index).lastname + " " + cyclistes.get(index).dossard;
+    }
+
+    /*
+     * Display all cyclistes
+     */
+    public void displayCyclistes() {
+
+        for (int i = 0; i < cyclistes.size(); i++) {
+            System.out.println(getCycliste(i));
+        }
     }
 
 }
