@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void Main(String[] args) {
 
         System.out.print("\nHello there\nPlease enter the name of the race\nRace : ");
 
