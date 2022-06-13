@@ -5,21 +5,27 @@ import java.util.Scanner;
 
 
 public class Course {
-
-    Course(){
-        this.cyclistes = new ArrayList<Cyclistes>();
-    }
     String name;
     private List<Cycliste> cyclistes;
     private int seqDossard=0;
-    
 
+    Course(){
+        this.cyclistes = new ArrayList<Cycliste>();
+    }
+    
     
  
     void inscription(String name){
         Cycliste c = new Cycliste(name, this.seqDossard++);
         this.inscription(c);
     }
+
+    private void inscription(Cycliste c) {
+        this.cyclistes.add(c);
+    }
+
+
+
     @Override
     public String toString(){
     String lst="";
@@ -44,7 +50,7 @@ public class Course {
     }
 
     void discalifierCycliste(int dossard){
-        this.cyclistes.get(dossard).discalifier();
+        this.cyclistes.get(dossard).discalifie();
     }
 
 
@@ -53,16 +59,16 @@ public class Course {
     
     Scanner saisie = new Scanner(System.in);
 
-    public Course(String nom) {
-        this.setNom(nom);
+    public Course(String name) {
+        this.setNom(name);
     }
 
     public String getNom() {
-        return this.nom;
+        return this.name;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setNom(String name) {
+        this.name = name;
     }
 
     
@@ -145,7 +151,7 @@ public class Course {
     }
     void afficherClassement(){
         List<Cycliste> resultat = classement();
-        for ( Cycliste c:  cyclisteFini){
+        for ( Cycliste c:  cyclisteFini ){
             System.out.println(c);
         }
     }
