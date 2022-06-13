@@ -1,11 +1,13 @@
-public class Cycliste{
-   java.utile.date
+import java.util.Date;
 
+
+public class Cycliste {
+   
     private String name;
     private String lastname;
     private int dossard;
-    private int datedebut;
-    private int datefin ; 
+    private Date datedebut;
+    private Date datefin ; 
     private int status;
 
     static final int PASENCOREDEMARRE=0;
@@ -27,6 +29,13 @@ public class Cycliste{
         this.name = name;
         this.lastname = lastname;
         this.dossard = dossard;
+    }
+
+
+    public Cycliste(String name, int dossard) {
+        this.name = name;
+        this.dossard = dossard;
+
     }
 
 
@@ -61,30 +70,19 @@ public class Cycliste{
         this.status = status;
     }
 
-    boolean start(){
-        if (this.datedebut==null){
-            return false;
-        }
-        return true;
-    }
+    
 
-    boolean finish(){
-        if (this.datefin==null){
-            return false;
-        }
-        return true;
-    }
 
     
     long gettemps(){
         if (getStatus() == Cycliste.FINI){
-            return (this.datefin.gettemps() - this.datefin.gettemps())/1000;
+            return (this.datefin.getTime() - this.datefin.getTime())/1000;
         }
 
         return -1;       
     }
     void arriver(){
-        if(start()==true && finish()== false){
+        if(demarrerCourse()==true && arriveeCourse()== false){
             this.datefin= new Date();
         }
 
@@ -92,8 +90,8 @@ public class Cycliste{
     }
 
     void debutcourse(){
-        if(start()== false && finish()== false){
-            this.datedebut= new java.util.Date().getTime();
+        if(demarrerCourse()== false && arriveeCourse()== false){
+            this.datedebut= new Date();
         }
     
 
@@ -121,6 +119,27 @@ public class Cycliste{
         setStatus(DISCALIFIE);
         this.datefin= new Date();
     }
+
+
+    public boolean demarrerCourse() {
+        if (this.datedebut==null){
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean arriveeCourse() {
+        if (this.datefin==null){
+            return true;
+        }
+        return false;
+    }
+
+
+  
+
+
+   
  
     
   
