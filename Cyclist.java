@@ -1,8 +1,7 @@
 import java.util.Date;
 
-
-public class Cycliste {
-   
+public class Cyclist {
+    
     private String name;
     private String lastname;
     private int dossard;
@@ -10,11 +9,11 @@ public class Cycliste {
     private Date datefin ; 
     private int status;
 
-    static final int PASENCOREDEMARRE=0;
-    static final int ENCOURS=1;
-    static final int FINI=2;
-    static final int DISCALIFIE=3;
-    static final int ABANDON=4;
+    static final int PASENCOREDEMARRE = 0;
+    static final int ENCOURS = 1;
+    static final int FINI = 2;
+    static final int DISCALIFIE = 3;
+    static final int ABANDON = 4;
 
 
 
@@ -25,14 +24,14 @@ public class Cycliste {
      * @param lastname
      * @param dossard
      */
-    public Cycliste(String name, String lastname, int dossard) {
+    public Cyclist(String name, String lastname, int dossard) {
         this.name = name;
         this.lastname = lastname;
         this.dossard = dossard;
     }
 
 
-    public Cycliste(String name, int dossard) {
+    public Cyclist(String name, int dossard) {
         this.name = name;
         this.dossard = dossard;
 
@@ -75,7 +74,7 @@ public class Cycliste {
 
     
     long gettemps(){
-        if (getStatus() == Cycliste.FINI){
+        if (getStatus() == Cyclist.FINI){
             return (this.datefin.getTime() - this.datefin.getTime())/1000;
         }
 
@@ -134,16 +133,5 @@ public class Cycliste {
         }
         return false;
     }
-
-
-  
-
-
-   
- 
-    
-  
-
-    
 }
 

@@ -20,7 +20,8 @@ public class Main {
 
         course.displayCyclistes();
 
-        
+
+        saisie.close();
 
     }
 }
