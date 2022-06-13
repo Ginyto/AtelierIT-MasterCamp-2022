@@ -1,5 +1,3 @@
-import java.util.Date;
-
 public class Cycliste{
    
 
@@ -8,6 +6,7 @@ public class Cycliste{
     private int dossard;
     private int datedebut;
     private int datefin ; 
+    private int status;
 
     static final int PASENCOREDEMARRE=0;
     static final int ENCOURS=1;
@@ -16,6 +15,8 @@ public class Cycliste{
     static final int ABANDON=4;
 
 
+
+    
     /**
      * Constructor
      * @param name
@@ -52,32 +53,39 @@ public class Cycliste{
     public void setDossard(int dossard) {
         this.dossard= dossard;
     }
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     boolean start(){
         if (this.datedebut==null){
-            return false
+            return false;
         }
-        return true
+        return true;
     }
 
     boolean finish(){
         if (this.datefin==null){
-            return false
+            return false;
         }
-        return true
+        return true;
     }
 
     
     long gettemps(){
-        if (start() == true && finish() == true){
-            return (datefin-datedebut);
+        if (getStatus() == Cycliste.FINI){
+            return (this.datefin.gettemps() - this.datefin.gettemps())/1000;
         }
 
         return -1;       
     }
     void arriver(){
         if(start()==true && finish()== false){
-            this.datefin= new Date()
+            this.datefin= new Date();
         }
 
         
@@ -85,17 +93,38 @@ public class Cycliste{
 
     void debutcourse(){
         if(start()== false && finish()== false){
-            this.datedebut= new java.util.Date().getTime()
+            this.datedebut= new java.util.Date().getTime();
         }
+    
 
 
     }
     void abandon(){
-        setstatus()
+        setStatus(ABANDON);
         this.datefin= new Date();
 
     }
+    void pasencoredemarre(){
+        setStatus(PASENCOREDEMARRE);
+        this.datefin= new Date();
+    }
+    void encours(){
+        setStatus(ENCOURS);
+        this.datefin= new Date();
+    }
+    void fini(){
+        setStatus(FINI);
+        this.datefin= new Date();
+    }
+
+    void discalifie(){
+        setStatus(DISCALIFIE);
+        this.datefin= new Date();
+    }
+ 
     
+  
+
     
 }
 
