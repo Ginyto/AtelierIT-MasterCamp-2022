@@ -1,13 +1,14 @@
 import java.util.Date;
 
-public class Cycliste{
-   
 
+public class Cycliste {
+   
     private String name;
     private String lastname;
     private int dossard;
-    private int datedebut;
-    private int datefin ; 
+    private Date datedebut;
+    private Date datefin ; 
+    private int status;
 
     static final int PASENCOREDEMARRE=0;
     static final int ENCOURS=1;
@@ -16,6 +17,8 @@ public class Cycliste{
     static final int ABANDON=4;
 
 
+
+    
     /**
      * Constructor
      * @param name
@@ -26,6 +29,13 @@ public class Cycliste{
         this.name = name;
         this.lastname = lastname;
         this.dossard = dossard;
+    }
+
+
+    public Cycliste(String name, int dossard) {
+        this.name = name;
+        this.dossard = dossard;
+
     }
 
 
@@ -52,50 +62,88 @@ public class Cycliste{
     public void setDossard(int dossard) {
         this.dossard= dossard;
     }
-
-    boolean start(){
-        if (this.datedebut==null){
-            return false
-        }
-        return true
+    public int getStatus() {
+        return status;
     }
 
-    boolean finish(){
-        if (this.datefin==null){
-            return false
-        }
-        return true
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     
+
+
+    
     long gettemps(){
-        if (start() == true && finish() == true){
-            return (datefin-datedebut);
+        if (getStatus() == Cycliste.FINI){
+            return (this.datefin.getTime() - this.datefin.getTime())/1000;
         }
 
         return -1;       
     }
     void arriver(){
-        if(start()==true && finish()== false){
-            this.datefin= new Date()
+        if(demarrerCourse()==true && arriveeCourse()== false){
+            this.datefin= new Date();
         }
 
         
     }
 
     void debutcourse(){
-        if(start()== false && finish()== false){
-            this.datedebut= new java.util.Date().getTime()
+        if(demarrerCourse()== false && arriveeCourse()== false){
+            this.datedebut= new Date();
         }
+    
 
 
     }
     void abandon(){
-        setstatus()
+        setStatus(ABANDON);
         this.datefin= new Date();
 
     }
+    void pasencoredemarre(){
+        setStatus(PASENCOREDEMARRE);
+        this.datefin= new Date();
+    }
+    void encours(){
+        setStatus(ENCOURS);
+        this.datefin= new Date();
+    }
+    void fini(){
+        setStatus(FINI);
+        this.datefin= new Date();
+    }
+
+    void discalifie(){
+        setStatus(DISCALIFIE);
+        this.datefin= new Date();
+    }
+
+
+    public boolean demarrerCourse() {
+        if (this.datedebut==null){
+            return true;
+        }
+        return false;
+    }
     
+    public boolean arriveeCourse() {
+        if (this.datefin==null){
+            return true;
+        }
+        return false;
+    }
+
+
+  
+
+
+   
+ 
+    
+  
+
     
 }
 

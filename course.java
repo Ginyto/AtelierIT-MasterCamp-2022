@@ -5,42 +5,103 @@ import java.util.Scanner;
 
 
 public class Course {
+    String name;
+    private List<Cycliste> cyclistes;
+    private int seqDossard=0;
 
-    String nom;
+    Course(){
+        this.cyclistes = new ArrayList<Cycliste>();
+    }
+    
+    
+ 
+    void inscription(String name){
+        Cycliste c = new Cycliste(name, this.seqDossard++);
+        this.inscription(c);
+    }
 
-    ArrayList<Cycliste> cyclistes = new ArrayList<Cycliste>();
+    private void inscription(Cycliste c) {
+        this.cyclistes.add(c);
+    }
 
+
+
+    @Override
+    public String toString(){
+    String lst="";
+    for (Cycliste c: cyclistes) {
+        lst += "-" + c.toString() +"\n";
+        }
+    return lst;
+    }
+
+    void demarrerCycliste(int dossard){
+        this.cyclistes.get(dossard).demarrerCourse();
+        
+    }
+
+    void finCycliste(int dossard){
+        this.cyclistes.get(dossard).arriveeCourse();
+        
+    }
+
+    void abandonCycliste(int dossard){
+        this.cyclistes.get(dossard).abandon();
+    }
+
+    void discalifierCycliste(int dossard){
+        this.cyclistes.get(dossard).discalifie();
+    }
+
+
+
+    
+    
     Scanner saisie = new Scanner(System.in);
 
-    public Course(String nom) {
-        this.setNom(nom);
+    public Course(String name) {
+        this.setNom(name);
     }
 
     public String getNom() {
-        return this.nom;
+        return this.name;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setNom(String name) {
+        this.name = name;
     }
 
     
     
-    void classement(){
+  List <Cycliste> classement(){
 
-        List<Cycliste> classement = new ArrayList<Cycliste>();
-        List<Cycliste> cyclisteFin = new ArrayList<Cycliste>();
+        List<Cycliste> resultat=new ArrayList<Cycliste>();
+        List<Cycliste> cyclisteFini = new ArrayList<Cycliste>();
         List<Cycliste> cyclisteEncours = new ArrayList<Cycliste>();
         List<Cycliste> cyclisteAbnDisc = new ArrayList<Cycliste>();
         
-        for (Cycliste c: cycliste){
+        for (Cycliste c: cyclistes){
 
-            int status = c.getstatus();
-            if (status == cycliste.FINI) cyclisteFini.add(c)
-            if (status == cycliste.ENCOURS) cyclisteEncours.add(c)
-            if (status == cycliste.DISCALIFIE||status == cycliste.ABANDON) cyclisteAbnDisc.add(c)
+            int status = c.getStatus();
+            if (status == Cycliste.FINI) cyclisteFini.add(c);
+            if (status == Cycliste.ENCOURS) cyclisteEncours.add(c);
+            if (status == Cycliste.DISCALIFIE||status == Cycliste.ABANDON) cyclisteAbnDisc.add(c);
         
         }
+        cyclisteFini.sort((cycliste,t1)-> Long.compare(t1,cycliste.gettemps()));
+        cyclisteEncours.sort((cycliste,t1)-> Long.compare(t1,cycliste.gettemps()));
+        cyclisteAbnDisc.sort((cycliste,t1)-> Long.compare(t1,cycliste.gettemps()));
+
+        for( Cycliste c : cyclisteFini){
+            System.out.println(c);
+        }
+
+        resultat.addAll(cyclisteFini);
+        resultat.addAll(cyclisteEncours);
+        resultat.addAll(cyclisteAbnDisc);
+
+        return resultat;
+
     }
 
 
@@ -76,7 +137,7 @@ public class Course {
 
     public String getCycliste(int index) {
 
-        return "cycliste -> " + cyclistes.get(index).name + " " + cyclistes.get(index).lastname + " " + cyclistes.get(index).dossard;
+        return "cycliste -> " + Cycliste.get(index).name + " " + cyclistes.get(index).lastname + " " + cyclistes.get(index).dossard;
     }
 
     /*
@@ -88,5 +149,13 @@ public class Course {
             System.out.println(getCycliste(i));
         }
     }
+    void afficherClassement(){
+        List<Cycliste> resultat = classement();
+        for ( Cycliste c:  cyclisteFini ){
+            System.out.println(c);
+        }
+    }
+    
+    
 
 }
