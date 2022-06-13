@@ -31,6 +31,11 @@ public class Cyclist {
     }
 
 
+    /**
+     * Constructor
+     * @param name
+     * @param dossard
+     */
     public Cyclist(String name, int dossard) {
         this.name = name;
         this.dossard = dossard;
@@ -73,13 +78,14 @@ public class Cyclist {
 
 
     
-    long gettemps(){
-        if (getStatus() == Cyclist.FINI){
-            return (this.datefin.getTime() - this.datefin.getTime())/1000;
+    long gettemps() {
+        if (getStatus() == Cyclist.FINI) {
+            return (this.datefin.getTime() - this.datefin.getTime()) / 1000;
         }
 
-        return -1;       
+        return -1;
     }
+    
     void arriver(){
         if(demarrerCourse()==true && arriveeCourse()== false){
             this.datefin= new Date();
@@ -88,14 +94,14 @@ public class Cyclist {
         
     }
 
-    void debutcourse(){
-        if(demarrerCourse()== false && arriveeCourse()== false){
-            this.datedebut= new Date();
+    void debutcourse() {
+        if (demarrerCourse() == false && arriveeCourse() == false) {
+            this.datedebut = new Date();
         }
-    
-
 
     }
+    
+    
     void abandon(){
         setStatus(ABANDON);
         this.datefin= new Date();
