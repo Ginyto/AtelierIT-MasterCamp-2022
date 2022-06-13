@@ -28,6 +28,7 @@ public class Course {
     
     void classement(){
 
+        List<Cycliste> classement = new ArrayList<Cycliste>();
         List<Cycliste> cyclisteFin = new ArrayList<Cycliste>();
         List<Cycliste> cyclisteEncours = new ArrayList<Cycliste>();
         List<Cycliste> cyclisteAbnDisc = new ArrayList<Cycliste>();
